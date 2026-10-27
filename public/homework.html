@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Homework - QuizRush</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/css/base.css" />
+    <link rel="stylesheet" href="/css/components.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container play">
+        <a class="brand" href="/">Quiz<span>Rush</span></a>
+        <button class="btn btn-small" id="theme-toggle" type="button">Theme</button>
+      </div>
+    </header>
+
+    <main class="container play">
+      <div id="announce" class="sr-only" aria-live="polite"></div>
+
+      <section id="screen-loading"><div class="spinner" role="status" aria-label="Loading"></div></section>
+
+      <section id="screen-error" class="hidden">
+        <div class="empty">
+          <p id="error-msg"></p>
+          <a class="btn" href="/">Back to start</a>
+        </div>
+      </section>
+
+      <section id="screen-join" class="hidden stack">
+        <div>
+          <h1 id="j-title"></h1>
+          <p class="muted" id="j-desc"></p>
+          <p class="hint" id="j-meta"></p>
+        </div>
+        <form id="join-form" class="card stack" novalidate>
+          <label class="field">
+            <span>Your name</span>
+            <input id="nickname" type="text" minlength="2" maxlength="16" autocomplete="off" required />
+            <small class="hint">2 to 16 characters. Use a name your teacher will recognise.</small>
+          </label>
+          <fieldset>
+            <legend>Pick your avatar</legend>
+            <div class="avatar-grid" id="avatars"></div>
+          </fieldset>
+          <p class="error-text" id="join-error" role="alert"></p>
+          <button class="btn btn-primary" id="join-btn" type="submit">Join homework</button>
+        </form>
+      </section>
+
+      <section id="screen-ready" class="hidden stack">
+        <h1 id="r-title"></h1>
+        <p class="muted" id="r-progress"></p>
+        <div id="r-last"></div>
+        <button class="btn btn-primary" id="go" type="button">Start</button>
+        <p class="hint"><button class="btn btn-small switch" type="button">Not you? Join as someone else</button></p>
+      </section>
+
+      <section id="screen-question" class="hidden stack">
+        <div class="row spread">
+          <span class="badge" id="q-badge"></span>
+          <span class="badge" id="q-points"></span>
+        </div>
+        <div id="q-countdown"></div>
+        <h1 id="q-text"></h1>
+        <div class="answers" id="answers"></div>
+        <p class="hint" id="answer-note" role="status"></p>
+      </section>
+
+      <section id="screen-done" class="hidden stack">
+        <h1 id="f-title"></h1>
+        <div class="stats" id="f-stats"></div>
+        <div class="card">
+          <h2>Badges</h2>
+          <div class="tags" id="f-badges"></div>
+        </div>
+        <div id="f-review" class="stack"></div>
+        <div id="f-board-box" class="hidden">
+          <h2>Class leaderboard</h2>
+          <div id="f-board"></div>
+        </div>
+        <p class="hint"><button class="btn btn-small switch" type="button">Not you? Join as someone else</button></p>
+      </section>
+
+      <section id="screen-closed" class="hidden">
+        <div class="empty">
+          <h1>This homework is closed</h1>
+          <p id="closed-msg"></p>
+          <a class="btn" href="/">Back to start</a>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="/js/homework.js"></script>
+  </body>
+</html>

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Host login - QuizRush</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/css/base.css" />
+    <link rel="stylesheet" href="/css/components.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container">
+        <a class="brand" href="/">Quiz<span>Rush</span></a>
+        <button class="btn btn-small" id="theme-toggle" type="button">Theme</button>
+      </div>
+    </header>
+
+    <main class="container narrow">
+      <div class="tabs" role="group" aria-label="Login or register">
+        <button class="btn" id="tab-login" type="button" aria-pressed="true">Log in</button>
+        <button class="btn" id="tab-register" type="button" aria-pressed="false">Register</button>
+      </div>
+
+      <form id="auth-form" class="card stack" novalidate>
+        <label class="field hidden" id="name-field">
+          <span>Name</span>
+          <input id="name" type="text" maxlength="50" autocomplete="name" />
+        </label>
+        <label class="field">
+          <span>Email</span>
+          <input id="email" type="email" autocomplete="email" required />
+        </label>
+        <label class="field">
+          <span>Password</span>
+          <input id="password" type="password" autocomplete="current-password" required />
+          <small class="hint hidden" id="pw-hint">At least 8 characters with a letter and a number.</small>
+        </label>
+        <p class="error-text" id="error" role="alert"></p>
+        <button class="btn btn-primary" id="submit" type="submit">Log in</button>
+      </form>
+    </main>
+
+    <script type="module" src="/js/login.js"></script>
+  </body>
+</html>

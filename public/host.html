@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Host game - QuizRush</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/css/base.css" />
+    <link rel="stylesheet" href="/css/components.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container">
+        <a class="brand" href="/dashboard.html">Quiz<span>Rush</span></a>
+        <div class="row">
+          <span id="conn" class="conn" role="status"></span>
+          <button class="btn btn-small" id="theme-toggle" type="button">Theme</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <div id="announce" class="sr-only" aria-live="polite"></div>
+
+      <section id="screen-loading"><div class="spinner" role="status" aria-label="Loading"></div></section>
+
+      <section id="screen-error" class="hidden">
+        <div class="empty">
+          <p id="error-msg"></p>
+          <a class="btn" href="/dashboard.html">Back to quizzes</a>
+        </div>
+      </section>
+
+      <section id="screen-lobby" class="hidden stack">
+        <div class="card center">
+          <p class="muted">Players go to</p>
+          <p class="join-url" id="join-url-text"></p>
+          <p class="muted">and enter the code</p>
+          <div class="big-code" id="code" aria-label="Game code"></div>
+          <div class="row copy-row">
+            <input id="join-link" type="text" readonly aria-label="Join link" />
+            <button class="btn" id="copy" type="button">Copy link</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="row spread">
+            <h2>Players <span class="badge" id="count">0</span></h2>
+            <button class="btn btn-small" id="lock" type="button" aria-pressed="false">Lock lobby</button>
+          </div>
+          <p class="empty" id="no-players">Waiting for players to join...</p>
+          <ul class="player-list" id="players" aria-live="polite"></ul>
+        </div>
+
+        <div class="row">
+          <button class="btn btn-primary" id="start" type="button" disabled>Start game</button>
+          <button class="btn btn-danger" id="cancel" type="button">Cancel game</button>
+        </div>
+      </section>
+
+      <section id="screen-question" class="hidden stack">
+        <div class="row spread">
+          <span class="badge" id="q-badge"></span>
+          <span class="badge" id="q-points"></span>
+        </div>
+        <div id="q-countdown"></div>
+        <h1 id="q-text"></h1>
+        <div class="answers" id="q-options"></div>
+        <p class="hint" id="progress" aria-live="polite"></p>
+        <div class="row">
+          <button class="btn" id="pause" type="button">Pause</button>
+          <button class="btn btn-primary hidden" id="resume" type="button">Resume</button>
+          <button class="btn" id="skip" type="button">Skip to results</button>
+          <button class="btn btn-danger" id="end-q" type="button">End game</button>
+        </div>
+      </section>
+
+      <section id="screen-reveal" class="hidden stack">
+        <h2 id="r-title"></h2>
+        <p id="r-correct"></p>
+        <div class="card" id="r-dist"></div>
+        <div>
+          <h2>Leaderboard</h2>
+          <div id="r-board"></div>
+        </div>
+        <div class="row">
+          <button class="btn btn-primary" id="next" type="button">Next question</button>
+          <button class="btn btn-danger" id="end-r" type="button">End game</button>
+        </div>
+      </section>
+
+      <section id="screen-finished" class="hidden stack">
+        <h1>Game over</h1>
+        <p id="f-note" class="muted"></p>
+        <div id="f-board"></div>
+        <div class="row">
+          <a class="btn btn-primary hidden" id="f-results" href="/dashboard.html">View full results</a>
+          <a class="btn" href="/dashboard.html">Back to quizzes</a>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="/js/host.js"></script>
+  </body>
+</html>

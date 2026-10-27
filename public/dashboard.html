@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Your quizzes - QuizRush</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/css/base.css" />
+    <link rel="stylesheet" href="/css/components.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container">
+        <a class="brand" href="/">Quiz<span>Rush</span></a>
+        <div class="row">
+          <span class="muted" id="who"></span>
+          <button class="btn btn-small" id="theme-toggle" type="button">Theme</button>
+          <button class="btn btn-small" id="logout" type="button">Log out</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <div class="row spread">
+        <h1>Your quizzes</h1>
+        <div class="row">
+          <button class="btn" id="import-btn" type="button">Import JSON</button>
+          <input class="hidden" id="import-file" type="file" accept=".json,application/json" aria-label="Choose quiz JSON file" />
+          <a class="btn btn-primary" href="/editor.html">New quiz</a>
+        </div>
+      </div>
+
+      <div class="row toolbar">
+        <input id="search" type="search" placeholder="Search by title or tag" aria-label="Search quizzes by title or tag" maxlength="50" />
+      </div>
+
+      <section id="list" aria-live="polite"></section>
+
+      <h2 class="section-gap">Homework</h2>
+      <section id="homework" aria-live="polite"></section>
+
+      <h2 class="section-gap">Past games</h2>
+      <section id="sessions" aria-live="polite"></section>
+    </main>
+
+    <script type="module" src="/js/dashboard.js"></script>
+  </body>
+</html>

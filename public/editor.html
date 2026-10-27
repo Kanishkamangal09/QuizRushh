@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Quiz editor - QuizRush</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/css/base.css" />
+    <link rel="stylesheet" href="/css/components.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container wide">
+        <a class="brand" href="/dashboard.html" id="back">Quiz<span>Rush</span></a>
+        <div class="row">
+          <a class="btn btn-small" href="/dashboard.html" id="back-link">Back to quizzes</a>
+          <button class="btn btn-small" id="theme-toggle" type="button">Theme</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="container wide">
+      <h1 id="heading">New quiz</h1>
+      <div id="status" aria-live="polite"></div>
+
+      <div class="editor-grid hidden" id="editor">
+        <form id="form" class="stack" novalidate>
+          <section class="card stack hidden" id="ai-panel">
+            <h2>Draft with AI</h2>
+            <label class="field">
+              <span>Topic</span>
+              <input id="ai-topic" type="text" maxlength="100" placeholder="The solar system" />
+            </label>
+            <div class="two-col">
+              <label class="field">
+                <span>Difficulty</span>
+                <select id="ai-difficulty">
+                  <option value="easy">Easy</option>
+                  <option value="medium" selected>Medium</option>
+                  <option value="hard">Hard</option>
+                </select>
+              </label>
+              <label class="field">
+                <span>Questions</span>
+                <input id="ai-count" type="number" min="1" max="15" value="5" />
+              </label>
+            </div>
+            <p class="hint">You get a draft to edit. AI can get facts wrong, so check every answer before saving.</p>
+            <p class="error-text" id="ai-error" role="alert"></p>
+            <button class="btn" id="ai-go" type="button">Generate draft</button>
+          </section>
+
+          <section class="card stack">
+            <label class="field">
+              <span>Title</span>
+              <input id="title" type="text" maxlength="100" required />
+            </label>
+            <label class="field">
+              <span>Description <small class="hint">(optional)</small></span>
+              <textarea id="description" rows="2" maxlength="300"></textarea>
+            </label>
+            <label class="field">
+              <span>Tags <small class="hint">(comma separated, up to 5)</small></span>
+              <input id="tags" type="text" />
+            </label>
+            <label class="check"><input id="shuffle-q" type="checkbox" /> Shuffle question order each game</label>
+            <label class="check"><input id="shuffle-o" type="checkbox" /> Shuffle answer options each game</label>
+          </section>
+
+          <div id="questions" class="stack"></div>
+
+          <button class="btn" id="add-q" type="button">Add question</button>
+
+          <div class="savebar row spread">
+            <span class="dirty-flag" id="dirty" role="status"></span>
+            <div class="row">
+              <p class="error-text" id="error" role="alert"></p>
+              <button class="btn btn-primary" id="save" type="submit">Save quiz</button>
+            </div>
+          </div>
+        </form>
+
+        <aside class="preview-col" aria-label="Live preview">
+          <h2>Live preview</h2>
+          <p class="hint">What players see. The Correct tag is only visible to you.</p>
+          <div id="preview"></div>
+          <div class="row toolbar">
+            <button class="btn btn-small" id="prev-q" type="button">Previous</button>
+            <button class="btn btn-small" id="next-q" type="button">Next</button>
+          </div>
+        </aside>
+      </div>
+    </main>
+
+    <script type="module" src="/js/editor.js"></script>
+  </body>
+</html>

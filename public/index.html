@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>QuizRush</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/css/base.css" />
+    <link rel="stylesheet" href="/css/components.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container">
+        <a class="brand" href="/">Quiz<span>Rush</span></a>
+        <div class="row">
+          <button class="btn btn-small" id="theme-toggle" type="button">Theme</button>
+          <a class="btn btn-small" href="/login.html">Host login</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="container hero">
+      <h1>Think fast.<br /><mark>Click faster.</mark></h1>
+      <p class="lead">Grab a 6-digit code, pick a nickname, and race your friends up the leaderboard.</p>
+      <div class="stickers"><span class="sticker">Live</span><span class="sticker">No sign-up</span><span class="sticker">Free</span></div>
+
+      <form class="card narrow stack join-box" action="/play.html" method="get">
+        <label class="field">
+          <span>Got a code? Type it in</span>
+          <input id="code" name="code" type="text" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" autocomplete="off" placeholder="000000" required />
+        </label>
+        <button class="btn btn-primary" type="submit">Let me in</button>
+      </form>
+
+      <p class="muted">Want to host? <a href="/login.html">Log in or create an account</a></p>
+    </main>
+
+    <script type="module" src="/js/ui.js"></script>
+  </body>
+</html>

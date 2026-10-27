@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Play - QuizRush</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/css/base.css" />
+    <link rel="stylesheet" href="/css/components.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container play">
+        <a class="brand" href="/">Quiz<span>Rush</span></a>
+        <div class="row">
+          <span id="conn" class="conn" role="status"></span>
+          <button class="btn btn-small" id="theme-toggle" type="button">Theme</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="container play">
+      <div id="announce" class="sr-only" aria-live="polite"></div>
+      <div id="host-away" class="banner hidden" role="status">Lost contact with the host. The game ends if they are not back within a minute.</div>
+
+      <section id="screen-loading"><div class="spinner" role="status" aria-label="Loading"></div></section>
+
+      <section id="screen-join" class="hidden">
+        <h1>Join a game</h1>
+        <form id="join-form" class="card stack" novalidate>
+          <label class="field">
+            <span>Game code</span>
+            <input id="code" type="text" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" autocomplete="off" required />
+          </label>
+          <label class="field">
+            <span>Nickname</span>
+            <input id="nickname" type="text" minlength="2" maxlength="16" autocomplete="off" required />
+          </label>
+          <fieldset>
+            <legend>Pick your avatar</legend>
+            <div class="avatar-grid" id="avatars"></div>
+          </fieldset>
+          <p class="error-text" id="join-error" role="alert"></p>
+          <button class="btn btn-primary" id="join-btn" type="submit">Join</button>
+        </form>
+      </section>
+
+      <section id="screen-lobby" class="hidden stack">
+        <div class="card center">
+          <div class="big-code" id="me-avatar" aria-hidden="true"></div>
+          <h1 id="me-name"></h1>
+          <p class="muted">You're in! Waiting for the host to start.</p>
+        </div>
+        <div class="card">
+          <h2>In the lobby <span class="badge" id="count">0</span></h2>
+          <ul class="player-list" id="players"></ul>
+        </div>
+      </section>
+
+      <section id="screen-question" class="hidden stack">
+        <div class="row spread">
+          <span class="badge" id="q-badge"></span>
+          <span class="badge" id="q-points"></span>
+        </div>
+        <div id="q-countdown"></div>
+        <h1 id="q-text"></h1>
+        <p class="banner hidden" id="paused-note" role="status">Paused by the host</p>
+        <div class="answers" id="answers"></div>
+        <p class="hint" id="answer-note" role="status"></p>
+      </section>
+
+      <section id="screen-reveal" class="hidden stack">
+        <div class="result-card" id="result-card">
+          <h2 id="result-title"></h2>
+          <p class="big" id="result-points"></p>
+          <p id="result-detail"></p>
+        </div>
+        <p id="p-correct"></p>
+        <div class="card" id="p-dist"></div>
+        <div>
+          <h2>Leaderboard</h2>
+          <div id="p-board"></div>
+        </div>
+        <p class="hint">Waiting for the host to continue...</p>
+      </section>
+
+      <section id="screen-finished" class="hidden stack">
+        <p class="banner hidden" id="f-banner"></p>
+        <h1 id="f-title"></h1>
+        <div class="stats" id="f-stats"></div>
+        <div class="card">
+          <h2>Badges</h2>
+          <div class="tags" id="f-badges"></div>
+        </div>
+        <div>
+          <h2>Final leaderboard</h2>
+          <div id="f-board"></div>
+        </div>
+        <button class="btn btn-primary" id="again" type="button">Join another game</button>
+      </section>
+
+      <section id="screen-kicked" class="hidden">
+        <div class="empty">
+          <h1>You were removed</h1>
+          <p>The host removed you from the game.</p>
+          <a class="btn" href="/">Back to start</a>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="/js/play.js"></script>
+  </body>
+</html>
