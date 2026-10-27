@@ -259,7 +259,7 @@ The host grace period can be shortened with `HOST_GRACE_MS` so the disconnect te
 
 ## Deployment
 
-Live URL: _to be added after deployment_
+Live URL: https://quizrushh.onrender.com
 
 QuizRush needs two things: a MongoDB database (MongoDB Atlas, free tier) and a place to run the Node server (Render, free tier). The full walkthrough:
 
